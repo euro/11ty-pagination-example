@@ -1,0 +1,61 @@
+---
+date: 2023-03-04T00:00:00.000-05:00
+pagination:
+  data: example
+  size: 5
+  alias: example
+layout: base.njk
+eleventyNavigation:
+  key: gallery
+eleventyComputed:
+  permalink: "gallery/example-{{ pagination.pageNumber + 1 }}/index.html"
+---
+<h1>Example of paginated json data using <code>eleventyComputed</code> permalink</h1>
+<p class="small">Page {{pagination.pageNumber + 1}} of {{pagination.pages.length}}</p>
+<hr>
+<div class="mb-5">
+  <div class="row g-4">
+    {% for example in example %}
+    <div class="col">
+      <div class="border p-3">{{ example.thing }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    {%- for pageEntry in pagination.pages %}
+    <li class="page-item"><a class="page-link {{'active' if loop.index0 === pagination.pageNumber else ''}}" href="{{ pagination.hrefs[ loop.index0 ] }}">{{ loop.index }}</a></li>
+    {%- endfor %}
+  </ul>
+</nav>
+<h2>Notes</h2>
+<p>See the difference when you remove the entire <code>eleventyComputed</code> block from the front matter. The output will be 4 pages with 5 results each but the folder structure is not what I desire. Permalink should help me output it how I need.</p>
+<p>The expected output here is:
+<ul>
+  <li>gallery/
+    <ul>
+      <li>example/
+        <ul>
+          <li>index.html (the first page of the collection results 1-5)</li>
+          <li>example-2/
+            <ul>
+              <li>index.html (page 2: results 6-10)</li>
+            </ul>
+          </li>
+          <li>example-3/
+            <ul>
+              <li>index.html (page 3: results 11-15)</li>
+            </ul>
+          </li>
+          <li>example-4/
+            <ul>
+              <li>index.html (page 4: results 16-17)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+</p>
