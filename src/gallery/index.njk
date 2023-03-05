@@ -1,5 +1,6 @@
 ---
 date: 2023-03-04T00:00:00.000-05:00
+permalink: gallery/example-{{ pagination.pageNumber + 1 }}/index.html
 pagination:
   data: example
   size: 5
@@ -7,8 +8,6 @@ pagination:
 layout: base.njk
 eleventyNavigation:
   key: gallery
-eleventyComputed:
-  permalink: "gallery/example-{{ pagination.pageNumber + 1 }}/index.html"
 ---
 <h1>Example of paginated json data using <code>eleventyComputed</code> permalink</h1>
 <p class="small">Page {{pagination.pageNumber + 1}} of {{pagination.pages.length}}</p>

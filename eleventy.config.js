@@ -2,8 +2,6 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
 
 module.exports = function (eleventyConfig) {
-  // disable permalinks
-  eleventyConfig.setDynamicPermalinks(false)
 
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
