@@ -1,7 +1,6 @@
-const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 
-
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
   return {
@@ -14,4 +13,4 @@ module.exports = function (eleventyConfig) {
     htmlTemplateEngine: ['njk'],
     markdownTemplateEngine: 'njk',
   };
-};
+}
